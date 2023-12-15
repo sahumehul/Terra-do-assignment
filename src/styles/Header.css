@@ -1,0 +1,60 @@
+.nav-ul li{
+    display: inline-block;
+    padding: 10px;
+}
+.nav-ul li img{
+    width: 50px;
+}
+.nav-ul{
+    background-color: skyblue;
+    padding: 5px;
+    margin: 0;
+}
+
+.nav-ul li a{
+    text-decoration: none;
+    color: aliceblue;
+    margin-left: 60px;
+}
+
+.footer{
+    position: absolute;
+    width: 100%;
+    background-color: skyblue;
+    color: aliceblue;
+    bottom: 0;
+    text-align: center;
+}
+
+
+
+.register{
+    color: rgb(125, 177, 222);
+    border-radius: 10px;
+    display: flex;
+    padding: 50px;
+    background-color: antiquewhite;
+    flex-direction: column;
+    width: 25%;
+    border: 1px solid burlywood;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.inputText {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border : 1px solid burlywood;
+}
+
+.btn-signup{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border : 1px solid burlywood;    
+    background-color: aqua;
+}

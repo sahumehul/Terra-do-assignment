@@ -4,6 +4,7 @@ import PrivateComponant from './componants/PrivateComponant';
 import SignUp from './componants/Signup';
 import { Header } from './componants/Header';
 import { Footer } from './componants/Footer';
+import Login from './componants/Login';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Header/>
       <Routes>
         <Route element={<PrivateComponant/>}>
-        <Route path="/" element={<h1>home page</h1>} />
+        <Route path="/" element={<Login/>} />
         <Route path="/add" element={<h1>Add product page</h1>} />
         <Route path="/update" element={<h1>Update page</h1>} />
         <Route path="/logout" element={<h1>Logout page</h1>} />

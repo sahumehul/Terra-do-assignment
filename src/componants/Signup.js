@@ -17,16 +17,24 @@ const SignUp = () => {
     }
   })
 
-  const handleSubmit =(e)=>{
-    dispatch(signupUser({name,email,password})).then((res)=>{
-      console.log(res.meta.arg);
-      alert("Successfully account created");
-      localStorage.setItem("user",res.meta.arg.email)
-      navigate("/");
-    }).catch((err)=>{
-      alert("Email already exist")
-    })
-  }
+  const handleSubmit =async (e)=>{
+      e.preventDefault(); // Prevent default form submission
+  
+      try {
+        const res = await dispatch(signupUser({ name, email, password }));
+        console.log(res.payload); // Access payload from the success action
+        if(res.payload.status == 400){
+          alert("Email already exist");
+        }else{
+          alert("Successfully account created");
+        localStorage.setItem("user", email);
+        navigate("/");
+        }
+      } catch (err) {
+        alert("Email already exists or there was an error");
+      }
+    };
+  
   return (
     <div className='register'>
     <h1>Register</h1>

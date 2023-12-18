@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signupUser } from '../redux/authSlice';
 
@@ -10,12 +10,7 @@ const SignUp = () => {
   const [password,setPassword] = useState("");
   const navigate =useNavigate()
   const dispatch = useDispatch()
-  useEffect(()=>{
-    const auth = localStorage.getItem("user");
-    if(auth){
-      navigate("/")
-    }
-  })
+
 
   const handleSubmit =async (e)=>{
       e.preventDefault(); // Prevent default form submission
@@ -27,7 +22,6 @@ const SignUp = () => {
           alert("Email already exist");
         }else{
           alert("Successfully account created");
-        localStorage.setItem("user", email);
         navigate("/");
         }
       } catch (err) {

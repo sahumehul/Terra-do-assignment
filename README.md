@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+/----------------Server for backend------------------/
+Ensure MongoDB is running locally or update the MongoDB connection details in db/config.js
+POST /register - Register a new user with a unique email address.
+POST /login - Login with registered credentials to receive an authentication token.
+GET /gettasks - Fetch all tasks.
+POST /addtask - Add a new task.
+PUT /updatetask/:id - Update a task by ID.
+DELETE /delete/:id - Delete a task by ID.
+
+
+Node.js
+Express.js
+MongoDB
+JWT (JSON Web Tokens) for authentication
+Bcrypt for password hashing

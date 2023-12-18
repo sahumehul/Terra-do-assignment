@@ -5,6 +5,7 @@ import SignUp from './componants/Signup';
 import { Header } from './componants/Header';
 import { Footer } from './componants/Footer';
 import Login from './componants/Login';
+import Addtask from './componants/Addtask';
 
 function App() {
   return (
@@ -13,12 +14,9 @@ function App() {
       <Header/>
       <Routes>
         <Route element={<PrivateComponant/>}>
-        <Route path="/" element={<Login/>} />
-        <Route path="/add" element={<h1>Add product page</h1>} />
-        <Route path="/update" element={<h1>Update page</h1>} />
-        <Route path="/logout" element={<h1>Logout page</h1>} />
-        <Route path="/profile" element={<h1>Profile page</h1>} />
+        <Route path="/addtask" element={<Addtask/>} />
         </Route>
+        <Route path="/" element={<Login/>} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
       </BrowserRouter>

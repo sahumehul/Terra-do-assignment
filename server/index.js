@@ -4,9 +4,27 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const cors = require("cors");
 const User = require("./db/user");
+const Tasks = require("./db/addTask");
+const auth = require("./db/auth")
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
+
+
+app.get("/gettasks",(req,res)=>{
+
+    Tasks.find().then((result)=>{
+        res.status(200).json({
+            message : "Data fetched",
+            data : result
+        })
+    }).catch((err)=>{
+        res.status(400).json({
+            message : "Something went wrong",
+            data : err
+        })
+    })
+})
 
 app.post("/register", (req,res)=>{
 
@@ -74,6 +92,58 @@ app.post("/login", async (req, res) => {
     }).catch(err => {
         res.status(500).json({
             message: "Internal server Error!!"
+        })
+    })
+})
+
+
+app.post("/addtask",(req,res)=>{
+    const taskData = new Tasks(req.body)
+
+    taskData.save().then((response)=>{
+        res.status(200).json({
+            message : "Task added successfully",
+            data : response
+        })
+    }).catch((err)=>{
+        res.status(400).json({
+            message : "Internal server error",
+            data : err
+        })
+    })
+})
+
+app.put("/updatetask/:id",(req,res)=>{
+    const id = req.params.id;
+    const updatedData = req.body;
+    Tasks.findByIdAndUpdate({_id:id},updatedData,{new:true}).then((response)=>{
+        res.status(200).json({
+            message : "Task Updated",
+            data : response
+        })
+    }).catch((err)=>{
+        res.status(400).json({
+            message : "Something went wrong",
+            data : err
+        })
+    })
+})
+
+app.delete("/delete/:id", (req, res) => {
+    Tasks.deleteOne({ _id: req.params.id }).then(response => {
+        if (response.deletedCount) {
+            res.status(200).json({
+                message: "Deleted Successfully",
+                data: response
+            })
+        } else {
+            res.status(400).json({
+                message: "Id not found"
+            })
+        }
+    }).catch(err => {
+        res.status(500).json({
+            message: "Internal server error.."
         })
     })
 })

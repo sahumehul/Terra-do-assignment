@@ -3,20 +3,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../styles/Header.css"
 
 export const Header = () => {
-  const auth = localStorage.getItem("user");
+  const auth = localStorage.getItem("token");
   const navigate = useNavigate()
   const logout =()=>{
     localStorage.clear();
-    navigate("/signup")
+    navigate("/")
   }
   return (
     <div>
         <ul className='nav-ul'>
-            <li><Link to="/">Login</Link></li>
-            <li><Link to="/add">Add Product</Link></li>
-            <li><Link to="/update">Update Product</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            <li>{auth ?<Link to="/signup" onClick={logout}>Logout</Link> : <Link to="/signup">Signup</Link>}</li>
+            <li><Link to="/addtask">Add task</Link></li>
+            <li>{auth ? <Link to="/" onClick={logout}>Logout</Link> : <Link to="/">Login</Link>}</li>
         </ul>
     </div>
   )

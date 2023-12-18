@@ -20,8 +20,8 @@ const Login = () => {
 
     try {
       const res = await dispatch(signinUser({ email, password }));
-      console.log(res); // Access payload from the success action
-      if (res.payload.message == "Email or password does not match!!") {
+      // console.log(res); // Access payload from the success action
+      if (res.payload.message == "Email or password does not match!!" || res.payload.message=="Email is not registered with us..") {
         alert("Login credetial mismatched");
       } else {
         alert("Logged in");
@@ -30,7 +30,7 @@ const Login = () => {
         navigate("/addtask");
       }
     } catch (err) {
-      alert("Email already exists or there was an error");
+      alert("Internal server error");
     }
   };
   return (
